@@ -3,9 +3,11 @@
 
 <head>
 	<title>Line Chart Multiple Axes</title>
-	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900i&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900i&display=swap"
+	 rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 	<script src="utils.js"></script>
+	<script src="vars.js"></script>
 	<link rel="stylesheet" type="text/css" href="./styles.css">
 
 	<style>
@@ -21,6 +23,13 @@
 	<div class="main">
 		<img class="logo" src="./logo_2.jpg">
 		<img class="logo" src="https://www.ksb.com/blueprint/img/temp/ksb-logo.png">
+		<!-- <h1>Valve of Wall Street</h1> -->
+		<!-- <h1>Internate of Valves</h1> -->
+		<h1>
+			<span style="color:#336699">Valv</span>
+			<span style="color:#f29400">Predict</span>
+		</h1>
+
 		<div style="width:100%;">
 			<canvas id="canvas"></canvas>
 		</div>
@@ -32,43 +41,59 @@
 		</div>
 	</div>
 
-	<button id="randomizeData">Randomize Data</button>
-	<script>
+	<script> 
 		var lineChartData = {
-			labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+			labels: window.var_labels,
 			datasets: [{
-				label: 'Pressure',
-				borderColor: '#AD8A68',
-				backgroundColor: '#AD8A68',
+				label: '10%',
+				borderColor: '#336699',
+				backgroundColor: '#336699',
 				fill: false,
-				data: [
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor()
-				],
+				data: window.var_data1,
 				yAxisID: 'y-axis-1',
 			}, {
-				label: 'Temperature',
+				label: '20%',
 				borderColor: '#f29400',
 				backgroundColor: '#f29400',
 				fill: false,
-				data: [
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor()
-				],
+				data: window.var_data2,
 				yAxisID: 'y-axis-2'
-			}]
+			},
+			{
+				label: '20%',
+				borderColor: 'red',
+				backgroundColor: 'red',
+				fill: false,
+				data: window.var_data3,
+				yAxisID: 'y-axis-3'
+			},
+			{
+				label: '20%',
+				borderColor: 'green',
+				backgroundColor: 'green',
+				fill: false,
+				data: window.var_data4,
+				yAxisID: 'y-axis-4'
+			},
+			{
+				label: '20%',
+				borderColor: 'yellow',
+				backgroundColor: 'yellow',
+				fill: false,
+				data: window.var_data5,
+				yAxisID: 'y-axis-5'
+			},
+			{
+				label: '20%',
+				borderColor: 'blue',
+				backgroundColor: 'blue',
+				fill: false,
+				data: window.var_data6,
+				yAxisID: 'y-axis-6'
+			}
+			]
 		};
-		console.log(lineChartData, "linechartdata")
+		console.log(lineChartData)
 		window.onload = function () {
 			var ctx = document.getElementById('canvas').getContext('2d');
 			window.myLine = Chart.Line(ctx, {
@@ -79,7 +104,7 @@
 					stacked: false,
 					title: {
 						display: true,
-						text: 'Chart.js Line Chart - Multi Axis'
+						text: ''
 					},
 					scales: {
 						yAxes: [{
@@ -92,18 +117,56 @@
 							display: true,
 							position: 'right',
 							id: 'y-axis-2',
-
 							// grid line settings
 							gridLines: {
 								drawOnChartArea: false, // only want the grid lines for one axis to show up
 							},
-						}],
+						},
+						{
+							type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+							display: true,
+							position: 'right',
+							id: 'y-axis-3',
+							// grid line settings
+							gridLines: {
+								drawOnChartArea: false, // only want the grid lines for one axis to show up
+							},
+						},
+						{
+							type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+							display: true,
+							position: 'right',
+							id: 'y-axis-4',
+							// grid line settings
+							gridLines: {
+								drawOnChartArea: false, // only want the grid lines for one axis to show up
+							},
+						},
+						{
+							type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+							display: true,
+							position: 'right',
+							id: 'y-axis-5',
+							// grid line settings
+							gridLines: {
+								drawOnChartArea: false, // only want the grid lines for one axis to show up
+							},
+						},
+						{
+							type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+							display: true,
+							position: 'right',
+							id: 'y-axis-6',
+							// grid line settings
+							gridLines: {
+								drawOnChartArea: false, // only want the grid lines for one axis to show up
+							},
+						}
+						],
 					}
 				}
 			});
 		};
-
-
 
 		document.getElementById('randomizeData').addEventListener('click', function () {
 			lineChartData.datasets.forEach(function (dataset) {
@@ -125,7 +188,7 @@
 			window.myLine.update();
 		}
 
-		setInterval(rander, 1000)
+		// setInterval(rander, 1000)
 
 	</script>
 </body>
