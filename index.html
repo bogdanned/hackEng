@@ -8,6 +8,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 	<script src="utils.js"></script>
 	<script src="vars.js"></script>
+	<script src="clusters.js"></script>
 	<link rel="stylesheet" type="text/css" href="./styles.css">
 
 	<style>
@@ -109,8 +110,34 @@
 				type: 'scatter',
 				data: {
 					datasets: [{
-						label: 'Scatter Dataset',
-						data: window.var_scatter
+						label: 'Temperature',
+						data: window.var_cluster_1,
+						borderColor: 'black',
+						backgroundColor: 'blue',
+					},
+					{
+						label: 'Pressure',
+						data: window.var_cluster_2,
+						borderColor: 'black',
+						backgroundColor: 'red',
+					},
+					{
+						label: 'else',
+						data: window.var_cluster_3,
+						borderColor: 'black',
+						backgroundColor: 'green',
+					},
+					{
+						label: 'else',
+						data: window.var_cluster_4,
+						borderColor: 'black',
+						backgroundColor: 'orange',
+					},
+					{
+						label: 'else',
+						data: window.var_cluster_5,
+						borderColor: 'black',
+						backgroundColor: 'green',
 					}]
 				},
 				options: {
