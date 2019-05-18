@@ -21,6 +21,7 @@
 
 <body>
 	<div class="main">
+
 		<img class="logo" src="./logo_2.jpg">
 		<img class="logo" src="https://www.ksb.com/blueprint/img/temp/ksb-logo.png">
 		<!-- <h1>Valve of Wall Street</h1> -->
@@ -30,8 +31,11 @@
 			<span style="color:#f29400">Predict</span>
 		</h1>
 
-		<div style="width:100%;">
+		<div>
 			<canvas id="canvas"></canvas>
+		</div>
+		<div style="width:100%;">
+			<canvas id="canvas2"></canvas>
 		</div>
 
 		<img class="graph_2" src="./vwz_svg.svg">
@@ -42,6 +46,9 @@
 
 		</div>
 	</div>
+
+	<!-- <iframe src="https://marvelapp.com/8c59hea?emb=1&iosapp=false&frameless=false" width="390" height="755" allowTransparency="true"
+	 frameborder="0"></iframe> -->
 
 	<script> 
 		var lineChartData = {
@@ -97,6 +104,24 @@
 		};
 		console.log(lineChartData)
 		window.onload = function () {
+			var ctx2 = document.getElementById('canvas2').getContext('2d');
+			window.scatterChart = new Chart(ctx2, {
+				type: 'scatter',
+				data: {
+					datasets: [{
+						label: 'Scatter Dataset',
+						data: window.var_scatter
+					}]
+				},
+				options: {
+					scales: {
+						xAxes: [{
+							type: 'linear',
+							position: 'bottom'
+						}]
+					}
+				}
+			});
 			var ctx = document.getElementById('canvas').getContext('2d');
 			window.myLine = Chart.Line(ctx, {
 				data: lineChartData,
@@ -104,9 +129,23 @@
 					responsive: true,
 					hoverMode: 'index',
 					stacked: false,
+					legend: {
+						display: true
+					},
 					title: {
 						display: true,
 						text: ''
+					},
+					animation: {
+						duration: 4000,
+						// onProgress: function (animation) {
+						// 	progress.value = animation.currentStep / animation.numSteps;
+						// },
+						// onComplete: function () {
+						// 	window.setTimeout(function () {
+						// 		progress.value = 0;
+						// 	}, 2000);
+						// }
 					},
 					scales: {
 						yAxes: [{
@@ -193,6 +232,7 @@
 		// setInterval(rander, 1000)
 
 	</script>
+
 </body>
 
 </html>
