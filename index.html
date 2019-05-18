@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>Line Chart Multiple Axes</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900i&display=swap" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+	<script src="utils.js"></script>
+	<link rel="stylesheet" type="text/css" href="./styles.css">
+
+	<style>
+		canvas {
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="main">
+		<img class="logo" src="./logo_2.jpg">
+		<div style="width:100%;">
+			<canvas id="canvas"></canvas>
+		</div>
+
+		<div class="dash_container">
+			<h1 class="metric1">Pressure: 50</h1>
+			<h1 class="metric1">Temperature: 151</h1>
+
+		</div>
+	</div>
+
+	<button id="randomizeData">Randomize Data</button>
+	<script>
+		var lineChartData = {
+			labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+			datasets: [{
+				label: 'Pressure',
+				borderColor: '#AD8A68',
+				backgroundColor: '#AD8A68',
+				fill: false,
+				data: [
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor()
+				],
+				yAxisID: 'y-axis-1',
+			}, {
+				label: 'Temperature',
+				borderColor: '#f29400',
+				backgroundColor: '#f29400',
+				fill: false,
+				data: [
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor()
+				],
+				yAxisID: 'y-axis-2'
+			}]
+		};
+		console.log(lineChartData, "linechartdata")
+		window.onload = function () {
+			var ctx = document.getElementById('canvas').getContext('2d');
+			window.myLine = Chart.Line(ctx, {
+				data: lineChartData,
+				options: {
+					responsive: true,
+					hoverMode: 'index',
+					stacked: false,
+					title: {
+						display: true,
+						text: 'Chart.js Line Chart - Multi Axis'
+					},
+					scales: {
+						yAxes: [{
+							type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+							display: true,
+							position: 'left',
+							id: 'y-axis-1',
+						}, {
+							type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+							display: true,
+							position: 'right',
+							id: 'y-axis-2',
+
+							// grid line settings
+							gridLines: {
+								drawOnChartArea: false, // only want the grid lines for one axis to show up
+							},
+						}],
+					}
+				}
+			});
+		};
+
+
+
+		document.getElementById('randomizeData').addEventListener('click', function () {
+			lineChartData.datasets.forEach(function (dataset) {
+				dataset.data = dataset.data.map(function () {
+					return randomScalingFactor();
+				});
+			});
+
+			window.myLine.update();
+		});
+
+		function rander() {
+			lineChartData.datasets.forEach(function (dataset) {
+				dataset.data = dataset.data.map(function () {
+					return randomScalingFactor();
+				});
+			});
+
+			window.myLine.update();
+		}
+
+		setInterval(rander, 1000)
+
+	</script>
+</body>
+
+</html>

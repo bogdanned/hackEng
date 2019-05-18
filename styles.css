@@ -1,0 +1,16 @@
+
+html{
+    font-family: 'Roboto', sans-serif;
+}
+
+.logo{
+    width: 165px;
+    padding: 20px;
+}
+
+
+.main{
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+}
