@@ -21,11 +21,11 @@ html{
 
 
 .graph_2{
-    width: 50%;
+    width: 70%;
 }
 
 .graph_1{
-    width: 50%;
+    width: 70%;
 }
 
 .graph_container{
@@ -33,7 +33,7 @@ html{
 }
 
 .kpi_container{
-    width: 50%;
+    width: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
