@@ -32,12 +32,31 @@
 			<span style="color:#f29400">Predict</span>
 		</h1>
 
-		<div>
-			<canvas id="canvas"></canvas>
+
+		<div class="graph_container">
+			<div class="graph_1">
+				<canvas id="canvas"></canvas>
+			</div>
+			<div class="kpi_container">
+				<div class="kpi">
+					<h1>12 gm</h1>
+					<span>Transient Process Data</span>
+				</div>
+			</div>
 		</div>
-		<div style="width:100%;">
-			<canvas id="canvas2"></canvas>
+
+		<div class="graph_container">
+			<div class="graph_2">
+				<canvas id="canvas2"></canvas>
+			</div>
+			<div class="kpi_container">
+				<div class="kpi">
+					<h1>12 gm</h1>
+					<span>Extracted features</span>
+				</div>
+			</div>
 		</div>
+
 
 		<img class="graph_2" src="./vwz_svg.svg">
 
@@ -56,7 +75,7 @@
 			labels: window.var_labels,
 			datasets: [{
 				label: '10%',
-				borderColor: 'black',
+				borderColor: '#336699',
 				backgroundColor: '#336699',
 				fill: false,
 				data: window.var_data1,
@@ -110,34 +129,34 @@
 				type: 'scatter',
 				data: {
 					datasets: [{
-						label: 'Temperature',
+						label: '10 %',
 						data: window.var_cluster_1,
 						borderColor: 'black',
-						backgroundColor: 'blue',
+						backgroundColor: '#336699',
 					},
 					{
-						label: 'Pressure',
+						label: '30 %',
 						data: window.var_cluster_2,
+						borderColor: 'black',
+						backgroundColor: '#f29400',
+					},
+					{
+						label: '40 %',
+						data: window.var_cluster_3,
 						borderColor: 'black',
 						backgroundColor: 'red',
 					},
 					{
-						label: 'else',
-						data: window.var_cluster_3,
-						borderColor: 'black',
-						backgroundColor: 'green',
-					},
-					{
-						label: 'else',
+						label: '60 %',
 						data: window.var_cluster_4,
 						borderColor: 'black',
-						backgroundColor: 'orange',
+						backgroundColor: 'green',
 					},
 					{
-						label: 'else',
+						label: '90 %',
 						data: window.var_cluster_5,
 						borderColor: 'black',
-						backgroundColor: 'green',
+						backgroundColor: 'yellow',
 					}]
 				},
 				options: {
@@ -145,6 +164,10 @@
 						xAxes: [{
 							type: 'linear',
 							position: 'bottom'
+						}],
+						yAxes: [{
+							type: 'linear',
+							position: 'right'
 						}]
 					}
 				}

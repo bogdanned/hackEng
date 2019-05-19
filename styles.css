@@ -14,7 +14,27 @@ html{
 
 
 .main{
-    max-width: 900px;
+    max-width: 1100px;
     margin: auto;
     text-align: center;
+}
+
+
+.graph_2{
+    width: 50%;
+}
+
+.graph_1{
+    width: 50%;
+}
+
+.graph_container{
+    display: flex;
+}
+
+.kpi_container{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
