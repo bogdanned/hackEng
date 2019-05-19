@@ -38,3 +38,11 @@ html{
     justify-content: center;
     align-items: center;
 }
+
+.image_cont{
+    display: flex
+}
+
+.image_cont > img{
+    height: 300px;
+}
